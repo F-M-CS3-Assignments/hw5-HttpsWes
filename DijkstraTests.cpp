@@ -1,4 +1,3 @@
-
 #include "Graph.h"
 #include "BetterPriorityQueue.h"
 #include "Dijkstra.h"
@@ -70,19 +69,30 @@ int DijkstraTest(){
 void MoreDijkstraTests(){
 	cout << "Deep Testing Dijkstra Algorithm..." << endl;
 
-	// Your code goes here!
+	Graph g;
+	g.AddNode(11);
+	g.AddNode(12);
+	g.AddNode(13);
+	g.AddNode(14);
+
+	g.AddEdge(11, 12, 1);
+	g.AddEdge(12, 13, 2);
+	g.AddEdge(13, 14, 3);
+	g.AddEdge(11, 14, 10);
+
+	int shortest = dijkstra(11, 14, &g);
+	cout << "Shortest path from 11 to 14: " << shortest << endl;
+	assert(shortest == 6);
 
 	cout << "DONE Deep Testing Dijkstra Algorithm" << endl;
 }
 
 
-int main(){
-	
+int main(){ 
 	DijkstraTest(); // this one by itself tests the graph on the assignment
 	cout << endl;
 	MoreDijkstraTests();
 	cout << endl;
 	cout << "ALL TESTS PASSED!" << endl;
-
 	return 0;
 }

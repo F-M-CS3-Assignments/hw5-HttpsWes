@@ -5,24 +5,30 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include "Graph.h"
+
 
 using namespace std;
 
-// Define your BPQNode struct here (or include it from a .txt/.h file if provided)
+// This is used for the items in the BetterPriorityQueue
 struct BPQNode {
-    int node;
-    int priority;
+	int pri = INT_MAX;
+	bool visited = false;
+	nodekey_t gnode = INVALID_NODE_KEY;
+	
+	bool operator<(const BPQNode &other) const {
+		return pri < other.pri;
+	}
 
-    // This makes priority_queue work with greater<>
-    bool operator>(const BPQNode& other) const {
-        return this->priority > other.priority;
-    }
-
-    // Optional: operator== if needed for comparison in Contains/Update
-    bool operator==(const BPQNode& other) const {
-        return this->node == other.node;
-    }
+	bool operator>(const BPQNode &other) const {
+		return pri > other.pri;
+	}
+	
+	bool operator==(const BPQNode &other) const {
+		return this->gnode == other.gnode;
+	}
 };
+
 
 // Custom priority queue class
 class BetterPriorityQueue : public priority_queue<

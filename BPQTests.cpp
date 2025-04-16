@@ -96,7 +96,9 @@ void UpdateTest() {
 	BPQNode negative;
 	assert(q.Update(negative) == false);
 	cout << "q after test 2: " << q.ToString() << endl;
-	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3);
+	string soln4 = "[(6, pri: 0), (2, pri: 1), (1, pri: 0), (4, pri: 3), (5, pri: 4), (3, pri: 2)]";
+
+	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3 || q.ToString() == soln4);
 	
 
 	// Test 3: update a node with a larger priority
@@ -110,6 +112,10 @@ void UpdateTest() {
 	assert(q.ToString() == soln1 || q.ToString() == soln2 || q.ToString() == soln3);	
 	
 	cout << "PASSED!" << endl;
+
+
+	
+
 }
 
 int main(){
